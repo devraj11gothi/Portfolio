@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Devraj Gothi — Designer &amp; Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Archivo:wght@400;500;600;700;800&family=STIX+Two+Text:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<script>
+// Intro. The overlay is built in JS and never lives in the markup: if this
+// script fails, visitors get the site rather than a black screen they cannot
+// dismiss. Plays once per session, and not at all under reduced motion.
+(function () {
+  var KEY = 'devraj-hello';
+  try { if (sessionStorage.getItem(KEY)) return; } catch (e) {}
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var o = document.createElement('div');
+  o.className = 'hello';
+  o.setAttribute('aria-hidden', 'true');
+  o.innerHTML =
+    '<svg viewBox="0 0 638 200" fill="none">' +
+      '<path class="hello__a" d="M8.69214 166.553C36.2393 151.239 61.3409 131.548 89.8191 98.0295C109.203 75.1488 119.625 49.0228 120.122 31.0026C120.37 17.6036 113.836 7.43883 101.759 7.43883C88.3598 7.43883 79.9231 17.6036 74.7122 40.9363C69.005 66.5793 64.7866 96.0036 54.1166 190.356"/>' +
+      '<path class="hello__b" d="M55.1624 181.135C60.6251 133.114 81.4118 98.0479 107.963 98.0479C123.844 98.0479 133.937 110.703 131.071 128.817C129.457 139.487 127.587 150.405 125.408 163.06C122.869 178.941 130.128 191.348 152.122 191.348C184.197 191.348 219.189 173.523 237.097 145.915C243.198 136.509 245.68 128.073 245.928 119.884C246.176 104.996 237.739 93.8296 222.851 93.8296C203.992 93.8296 189.6 115.17 189.6 142.465C189.6 171.745 205.481 192.341 239.208 192.341C285.066 192.341 335.86 137.292 359.199 75.8585C365.788 58.513 368.26 42.4065 368.26 31.1512C368.26 17.8057 364.042 7.55823 352.131 7.55823C340.469 7.55823 332.777 16.6141 325.829 30.9129C317.688 47.4967 311.667 71.4162 309.203 98.4549C303 166.301 316.896 191.348 349.936 191.348C390 191.348 434.542 135.534 457.286 75.6686C463.803 58.513 466.275 42.4065 466.275 31.1512C466.275 17.8057 462.057 7.55823 450.146 7.55823C438.484 7.55823 430.792 16.6141 423.844 30.9129C415.703 47.4967 409.682 71.4162 407.218 98.4549C401.015 166.301 414.911 191.348 444.416 191.348C473.874 191.348 489.877 165.67 499.471 138.402C508.955 111.447 520.618 94.8221 544.935 94.8221C565.035 94.8221 580.916 109.71 580.916 137.75C580.916 168.768 560.792 192.093 535.362 192.341C512.984 192.589 498.285 174.475 499.774 147.179C501.511 116.907 519.873 94.8221 543.943 94.8221C557.839 94.8221 569.51 100.999 578.682 107.725C603.549 125.866 622.709 114.656 630.047 96.7186"/>' +
+    '</svg>';
+  document.documentElement.appendChild(o);
+  document.documentElement.classList.add('is-hello');
+
+  // dash by the path's own length, then animate the offset back to zero —
+  // measured rather than hardcoded, so it survives any edit to the artwork
+  [].forEach.call(o.querySelectorAll('path'), function (p) {
+    var len = p.getTotalLength();
+    p.style.strokeDasharray = len;
+    p.style.strokeDashoffset = len;
+  });
+
+  var done = false;
+  function end() {
+    if (done) return;
+    done = true;
+    try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+    // curtain up, page up: swap the classes in the same frame so the body
+    // transitions off its offset while the overlay slides away above it
+    var root = document.documentElement;
+    root.classList.add('is-revealing');
+    root.classList.remove('is-hello');
+    o.classList.add('is-out');
+    setTimeout(function () {
+      o.remove();
+      root.classList.remove('is-revealing');
+    }, 1150);
+  }
+
+  o.addEventListener('click', end);
+  addEventListener('keydown', end, { once: true });
+  addEventListener('wheel', end, { once: true, passive: true });
+  addEventListener('touchstart', end, { once: true, passive: true });
+  setTimeout(end, 3550);
+
+  requestAnimationFrame(function () { o.classList.add('is-drawing'); });
+})();
+</script>
+
+
+
+  <div class="topbar">
+    <a class="wordmark" href="/">Devraj Gothi<sup>&reg;</sup></a>
+    <nav class="dock glass" aria-label="Primary">
+      <a href="#home" aria-label="Home" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 10.8 12 3.2l9 7.6" />
+          <path d="M5.8 9.4V20.8h12.4V9.4" />
+        </svg>
+      </a>
+      <a href="#work" aria-label="Work">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3.2" y="7.2" width="17.6" height="13.2" rx="2.4" />
+          <path d="M8.4 7.2V5.6a1.6 1.6 0 0 1 1.6-1.6h4a1.6 1.6 0 0 1 1.6 1.6v1.6" />
+        </svg>
+      </a>
+      <a href="#about" aria-label="About">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="3.6" />
+          <path d="M4.8 20.4c0-3.7 3.2-5.8 7.2-5.8s7.2 2.1 7.2 5.8" />
+        </svg>
+      </a>
+      <a href="#contact" aria-label="Contact">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="5.4" width="18" height="13.2" rx="2.4" />
+          <path d="m3.8 7.4 7.1 5.1a2 2 0 0 0 2.2 0l7.1-5.1" />
+        </svg>
+      </a>
+    </nav>
+    <p class="sayhi">say hi — <a href="mailto:devrajgothi11@gmail.com">devrajgothi11@gmail.com</a></p>
+  </div>
+
+  <header class="hero" id="home">
+
+    <div class="stage">
+      <h1 class="name name--fill">Devraj</h1>
+      <img class="figure" src="assets/pixar_nobg.png" alt="Devraj Gothi" fetchpriority="high">
+      <p class="name name--outline" aria-hidden="true">Devraj</p>
+    </div>
+
+    <div class="foot">
+      <h2 class="tagline">I Design It. Then I Build It.</h2>
+      <div class="pitch">
+        <p>I design and build websites end to end — layout, type, motion, code. Mostly for founders and small teams who need the whole thing, not half of it.</p>
+        <a class="cta glass" href="#work">
+          <span class="cta__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 12h15M13 6l6 6-6 6" />
+            </svg>
+          </span>
+          <span>See My Work</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="work" id="work">
+    <h2 class="work__title">Selected Work</h2>
+    <ol class="work__list">
+      <li class="row">
+        <a class="row__link" href="https://qsensetech.com" target="_blank" rel="noopener"
+          data-preview="assets/website_previews/qsense.jpg" aria-label="QSense Tech — opens in a new tab">
+          <div class="row__meta">
+            <span class="row__num">O-001</span>
+            <span class="row__tag">Client</span>
+          </div>
+          <div class="row__body">
+            <h3 class="row__name">QSense Tech</h3>
+            <p class="row__line">Crop Science, Made Visible</p>
+          </div>
+        </a>
+      </li>
+      <li class="row">
+        <a class="row__link" href="https://dna-website-ten.vercel.app" target="_blank" rel="noopener"
+          data-preview="assets/website_previews/dna.jpg" aria-label="Lilysys Solutions — opens in a new tab">
+          <div class="row__meta">
+            <span class="row__num">O-002</span>
+            <span class="row__tag">Client</span>
+          </div>
+          <div class="row__body">
+            <h3 class="row__name">Lilysys Solutions</h3>
+            <p class="row__line">Genomes, Made Legible</p>
+          </div>
+        </a>
+      </li>
+      <li class="row">
+        <a class="row__link" href="https://sokia-watch-web-desgin.vercel.app" target="_blank" rel="noopener"
+          data-preview="assets/website_previews/sokai.jpg" aria-label="SOKAI — opens in a new tab">
+          <div class="row__meta">
+            <span class="row__num">O-003</span>
+            <span class="row__tag">Self-directed</span>
+          </div>
+          <div class="row__body">
+            <h3 class="row__name">SOKAI</h3>
+            <p class="row__line">Calibre S-01</p>
+          </div>
+        </a>
+      </li>
+      <li class="row">
+        <a class="row__link" href="https://avelon-clothing.vercel.app" target="_blank" rel="noopener"
+          data-preview="assets/website_previews/avelon.jpg" aria-label="Avelon — opens in a new tab">
+          <div class="row__meta">
+            <span class="row__num">O-004</span>
+            <span class="row__tag">Self-directed</span>
+          </div>
+          <div class="row__body">
+            <h3 class="row__name">Avelon</h3>
+            <p class="row__line">Heritage, Still Worn</p>
+          </div>
+        </a>
+      </li>
+      <li class="row">
+        <a class="row__link" href="https://whisky-website-design.vercel.app" target="_blank" rel="noopener"
+          data-preview="assets/website_previews/whisky.jpg" aria-label="Ashbourne — opens in a new tab">
+          <div class="row__meta">
+            <span class="row__num">O-005</span>
+            <span class="row__tag">Self-directed</span>
+          </div>
+          <div class="row__body">
+            <h3 class="row__name">Ashbourne</h3>
+            <p class="row__line">Laid Down in the Dark</p>
+          </div>
+        </a>
+      </li>
+    </ol>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about__stage">
+    <h2 class="about__title about__title--fill">A brief inventory of my wandering thoughts.</h2>
+
+    <!-- swap the src for the new render; the frame and the orange well are CSS -->
+    <figure class="about__polaroid">
+      <span class="about__shot">
+        <img src="assets/pixar_nobg.png" alt="Devraj Gothi" loading="lazy">
+      </span>
+      <figcaption>Devraj &middot; 2026</figcaption>
+    </figure>
+
+    <p class="about__title about__title--outline" aria-hidden="true">A brief inventory of my wandering thoughts.</p>
+  </div>
+
+  <div class="about__grid">
+    <p class="about__lede">I design and build websites. Both halves, same person.</p>
+
+    <div class="about__notes">
+      <p>
+        <span class="about__key">What I do</span>
+        The layout, the type, the motion and the code are decisions made by one
+        head instead of handed across a wall.
+      </p>
+      <!-- Add your current status here if you want it stated outright:
+           student / employed / full-time freelance. -->
+      <p>
+        <span class="about__key">What I'm doing now</span>
+        Client work, self-directed builds, and AI work — retrieval systems that
+        let you ask questions of your own documents and get answers that cite
+        where they came from. Same job as everything else on this page: take
+        something complicated and make it legible.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- ===========================================================================
+     LIQUID GLASS — TUNING REFERENCE
+
+     Add class="glass" to any element. Everything below is optional.
+
+     PER-ELEMENT, in the HTML (these drive the SVG filter):
+
+       data-glass-scale     rim refraction strength.   default: shortSide * 0.95
+                            How hard the edge bends the backdrop. The headline
+                            knob. Too high and the edge smears.
+
+       data-glass-rim       bezel width in px.         default: max(12, short * .32)
+                            How far in from the edge the bend reaches. Small
+                            value = thin sharp lip. Large = fat rounded bevel.
+
+       data-glass-curve     falloff exponent.          default: 2.4
+                            1 = straight ramp across the whole band.
+                            Higher = flat middle, everything crammed at the very
+                            edge. The reference uses 4; that only reads well on
+                            tall shapes. Below ~2 the whole face starts warping.
+
+       data-glass-zoom      magnification pass.        default: shortSide * 0.16
+                            Bends the WHOLE surface, not just the rim, so the
+                            content behind looks slightly enlarged. 0 = off.
+
+       data-glass-saturate  colour fringe.             default: 9
+                            Saturation boost applied only on the hairline edge.
+                            3 = subtle, 9 = reference, 20+ = prismatic.
+
+       data-glass-soften    output blur in px.         default: 0
+                            Only for killing stair-steps. Above ~1 it frosts.
+
+       data-glass-blur      the non-displacement part of backdrop-filter.
+                            default: saturate(1.05). Set "blur(10px)" to frost a
+                            single element while the rest stay clear.
+
+     PER-ELEMENT OR GLOBAL, in styles.css on .glass (these drive the CSS):
+
+       --glass-bg       fill tint.     default rgba(255,255,255,.09)
+                        Raise for more presence, lower for more transparency.
+                        This is the #1 cause of "looks milky".
+       --sheen          flat top gloss. default .07
+       --glass-radius   corner radius.  default 999px
+       --glass-blur     fallback frost for non-Chromium browsers.
+
+     WHERE THE 3D COMES FROM — the box-shadow on .glass, not the filter:
+       the two 24px inset shadows (dark from the top, light from the bottom) are
+       what give interior volume. Widen the blur for a puffier read, tighten it
+       for a harder slab.
+
+     QUICK DIAGNOSIS
+       looks flat        -> raise scale, then rim
+       looks milky       -> lower --glass-bg and --sheen
+       edge smears       -> lower scale or raise curve
+       whole face warps  -> raise curve
+       effect invisible  -> Chromium only. Everything else gets --glass-blur.
+     =========================================================================== -->
+  <!-- Liquid glass: per-element SVG displacement map chained onto backdrop-filter.
+     Chromium only — userAgentData is a Chromium-only API, so Safari and Firefox
+     never set --glass-refract and fall back to the plain blurred glass. -->
+  
+<footer class="contact" id="contact">
+  <p class="contact__name contact__name--fill">Devraj</p>
+
+  <div class="contact__panel">
+    <div class="contact__row">
+      <div>
+        <p class="contact__label">Connect with me</p>
+        <ul class="contact__socials">
+          <li><a href="https://github.com/devraj11gothi" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.4-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
+          </a></li>
+          <li><a href="https://www.linkedin.com/in/devraj11gothi" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3.2 9h3.6v12H3.2zM9.2 9h3.45v1.64h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.39 4.3 5.5V21h-3.6v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9.2z"/></svg>
+          </a></li>
+          <li><a href="mailto:devrajgothi11@gmail.com" aria-label="Email Devraj">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.4h18c.66 0 1.2.54 1.2 1.2v10.8c0 .66-.54 1.2-1.2 1.2H3c-.66 0-1.2-.54-1.2-1.2V6.6c0-.66.54-1.2 1.2-1.2zm9 7.7 8.1-5.5H3.9z"/></svg>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="contact__nav" aria-label="Footer">
+        <a href="#home">Home</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="mailto:devrajgothi11@gmail.com">Contact</a>
+      </nav>
+    </div>
+
+    <div class="contact__row contact__row--base">
+      <p>Designed and built by Devraj Gothi.</p>
+      <p>Copyright &copy; Devraj Gothi 2026</p>
+    </div>
+  </div>
+
+  <p class="contact__name contact__name--outline" aria-hidden="true">Devraj</p>
+</footer>
+
+<svg id="glass-filters" aria-hidden="true"></svg>
+  <script>
+    (function () {
+
+      /* ---- EDIT THESE ---------------------------------------------------------
+         Site-wide defaults. `short` is the element's shorter side in px, so these
+         scale themselves to each button. Replace any expression with a plain number
+         to pin it (e.g. rim: 20). To change one element only, put the value on that
+         element instead: <a class="glass" data-glass-scale="70"> — see the guide
+         comment above for what each one does.                                    */
+      var D = {
+        scale: function (short) { return short * 1.5; },   // rim refraction strength
+        rim: function (short) { return Math.max(12, short * 0.4); }, // bezel width, px
+        zoom: function (short) { return short * 0.16; },   // magnification, 0 = off
+        curve: 2.4,          // falloff: 1 = even ramp, higher = crammed at the edge
+        saturate: 9,            // colour fringe on the hairline
+        soften: 0,            // output blur, px
+        blur: 'saturate(1.05)'   // non-displacement part of backdrop-filter
+      };
+      /* ------------------------------------------------------------------------ */
+
+      var host = document.getElementById('glass-filters');
+      if (!host || !window.ResizeObserver || !navigator.userAgentData) return;
+      var NS = 'http://www.w3.org/2000/svg', SS = 2, n = 0;   // SS = supersample factor
+
+      function canvas(w, h) {
+        var c = document.createElement('canvas');
+        c.width = w * SS; c.height = h * SS;
+        return c;
+      }
+
+      // Signed distance to a rounded rect, plus the outward normal at that point.
+      function sdf(px, py, bx, by, rr) {
+        var qx = Math.abs(px) - (bx - rr), qy = Math.abs(py) - (by - rr);
+        var d = Math.hypot(Math.max(qx, 0), Math.max(qy, 0)) + Math.min(Math.max(qx, qy), 0) - rr;
+        var nx, ny;
+        if (qx > 0 && qy > 0) { var l = Math.hypot(qx, qy) || 1; nx = qx / l; ny = qy / l; }
+        else if (qx > qy) { nx = 1; ny = 0; }
+        else { nx = 0; ny = 1; }
+        return { d: d, nx: px < 0 ? -nx : nx, ny: py < 0 ? -ny : ny };
+      }
+
+      // 1. Zoom map — a plain linear ramp over the whole surface. Sampling pulls
+      //    inward from every side, which is what magnifies rather than just bends.
+      function zoomMap(w, h) {
+        var c = canvas(w, h), g = c.getContext('2d');
+        var im = g.createImageData(c.width, c.height), d = im.data;
+        for (var y = 0; y < c.height; y++) {
+          var gv = Math.round(255 * (1 - y / (c.height - 1)));
+          for (var x = 0; x < c.width; x++) {
+            var i = (y * c.width + x) * 4;
+            d[i] = Math.round(255 * (1 - x / (c.width - 1)));
+            d[i + 1] = gv; d[i + 2] = 0; d[i + 3] = 255;
+          }
+        }
+        g.putImageData(im, 0, 0);
+        return c.toDataURL();
+      }
+
+      // 2. Rim map — flat 128/128 through the middle, ramping hard over the last
+      //    few px. The reference's own pixels fit t^4, far steeper than a linear
+      //    falloff: that concentration at the very edge is what reads as thickness.
+      function rimMap(w, h, radius, rim, curve) {
+        var c = canvas(w, h), g = c.getContext('2d');
+        var im = g.createImageData(c.width, c.height), d = im.data;
+        var bx = c.width / 2, by = c.height / 2;
+        var rr = Math.min(radius * SS, bx, by), band = rim * SS;
+        for (var y = 0; y < c.height; y++) {
+          for (var x = 0; x < c.width; x++) {
+            var s = sdf(x + 0.5 - bx, y + 0.5 - by, bx, by, rr);
+            var t = Math.min(1, Math.max(0, 1 + s.d / band));
+            var f = Math.pow(t, curve);
+            var i = (y * c.width + x) * 4;
+            d[i] = Math.round(128 - s.nx * f * 127);
+            d[i + 1] = Math.round(128 - s.ny * f * 127);
+            d[i + 2] = 0; d[i + 3] = 255;
+          }
+        }
+        g.putImageData(im, 0, 0);
+        return c.toDataURL();
+      }
+
+      // 3. Specular ring — a hairline on the boundary, bright top and bottom, dim
+      //    on the sides. Sampled straight off the reference: rgb 220 / alpha 191 at
+      //    top and bottom, rgb 128 / alpha 64 at left and right.
+      function specMap(w, h, radius) {
+        var c = canvas(w, h), g = c.getContext('2d');
+        var im = g.createImageData(c.width, c.height), d = im.data;
+        var bx = c.width / 2, by = c.height / 2;
+        var rr = Math.min(radius * SS, bx, by), half = 1.6 * SS;
+        for (var y = 0; y < c.height; y++) {
+          for (var x = 0; x < c.width; x++) {
+            var s = sdf(x + 0.5 - bx, y + 0.5 - by, bx, by, rr);
+            var ring = Math.max(0, 1 - Math.abs(s.d + half) / half);
+            if (!ring) continue;
+            var up = Math.abs(s.ny);                       // 0 on the sides, 1 top/bottom
+            var i = (y * c.width + x) * 4;
+            var v = Math.round(128 + 92 * up);
+            d[i] = d[i + 1] = d[i + 2] = v;
+            d[i + 3] = Math.round((64 + 127 * up) * ring);
+          }
+        }
+        g.putImageData(im, 0, 0);
+        return c.toDataURL();
+      }
+
+      function build(el) {
+        var r = el.getBoundingClientRect();
+        var w = Math.round(r.width), h = Math.round(r.height);
+        if (!w || !h) return;
+        var min = Math.min(w, h);
+
+        var id = el.dataset.glassId || (el.dataset.glassId = 'lg' + n++);
+        // The reference's ratios (rim .15, scale .65, curve 4) are tuned to a 150px
+        // tall lens. Our pills are ~58px, so a proportional band collapses to a few
+        // px and t^4 kills most of that: widen the band and soften the curve, or the
+        // refraction only ever lands on the outermost pixel or two.
+        var rim = +(el.dataset.glassRim || D.rim(min));
+        var scale = +(el.dataset.glassScale || D.scale(min));
+        var zoom = el.dataset.glassZoom !== undefined ? +el.dataset.glassZoom : D.zoom(min);
+        var curve = +(el.dataset.glassCurve || D.curve);
+        var sat = +(el.dataset.glassSaturate || D.saturate);
+        var soft = +(el.dataset.glassSoften || D.soften);
+        var radius = Math.min(parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0, w / 2, h / 2);
+
+        var f = host.querySelector('#' + id);
+        if (!f) {
+          f = document.createElementNS(NS, 'filter');
+          f.setAttribute('id', id);
+          f.setAttribute('color-interpolation-filters', 'sRGB');
+          f.setAttribute('x', '0'); f.setAttribute('y', '0');
+          f.setAttribute('width', '100%'); f.setAttribute('height', '100%');
+          f.innerHTML =
+            '<feImage preserveAspectRatio="none" result="zoom_map"/>' +
+            '<feDisplacementMap in="SourceGraphic" in2="zoom_map" xChannelSelector="R" yChannelSelector="G" result="magnified"/>' +
+            '<feGaussianBlur in="magnified" result="softened"/>' +
+            '<feImage preserveAspectRatio="none" result="rim_map"/>' +
+            '<feDisplacementMap in="softened" in2="rim_map" xChannelSelector="R" yChannelSelector="G" result="displaced"/>' +
+            '<feColorMatrix in="displaced" type="saturate" result="displaced_saturated"/>' +
+            '<feImage preserveAspectRatio="none" result="specular_layer"/>' +
+            '<feComposite in="displaced_saturated" in2="specular_layer" operator="in" result="specular_saturated"/>' +
+            '<feComponentTransfer in="specular_layer" result="specular_faded">' +
+            '<feFuncA type="linear" slope="0.5"/>' +
+            '</feComponentTransfer>' +
+            '<feBlend in="specular_saturated" in2="displaced" mode="normal" result="withSaturation"/>' +
+            '<feBlend in="specular_faded" in2="withSaturation" mode="normal"/>';
+          host.appendChild(f);
+        }
+
+        var imgs = f.querySelectorAll('feImage');
+        var hrefs = [zoomMap(w, h), rimMap(w, h, radius, rim, curve), specMap(w, h, radius)];
+        imgs.forEach(function (im, k) {
+          im.setAttribute('x', 0); im.setAttribute('y', 0);
+          im.setAttribute('width', w); im.setAttribute('height', h);
+          im.setAttribute('href', hrefs[k]);
+        });
+
+        var maps = f.querySelectorAll('feDisplacementMap');
+        maps[0].setAttribute('scale', zoom);
+        maps[1].setAttribute('scale', scale);
+        f.querySelector('feGaussianBlur').setAttribute('stdDeviation', soft);
+        f.querySelector('feColorMatrix').setAttribute('values', sat);
+
+        el.style.setProperty('--glass-refract', 'url(#' + id + ')');
+        el.style.setProperty('--glass-blur', el.dataset.glassBlur || D.blur);
+      }
+
+      var ro = new ResizeObserver(function (entries) {
+        entries.forEach(function (e) { build(e.target); });
+      });
+      document.querySelectorAll('.glass').forEach(function (el) { ro.observe(el); });
+    })();
+  </script>
+
+
+  <script>
+    // Hover preview. A CSS `cursor: url()` caps at 128px in Chrome and silently
+    // falls back above that, so this is a fixed element trailing the pointer instead.
+    (function () {
+      var rows = document.querySelectorAll('.row__link[data-preview]');
+      if (!rows.length || !matchMedia('(hover: hover)').matches) return;
+
+      var peek = document.createElement('div');
+      peek.className = 'peek';
+      var img = new Image();
+      peek.appendChild(img);
+      document.body.appendChild(peek);
+
+      // warm the cache so the first hover isn't an empty frame
+      rows.forEach(function (r) { new Image().src = r.dataset.preview; });
+
+      var ease = matchMedia('(prefers-reduced-motion: reduce)').matches ? 1 : 0.16;
+      var tx = 0, ty = 0, x = 0, y = 0, live = false, raf = null;
+
+      function loop() {
+        x += (tx - x) * ease;
+        y += (ty - y) * ease;
+        peek.style.translate = x.toFixed(1) + 'px ' + y.toFixed(1) + 'px';
+        raf = live ? requestAnimationFrame(loop) : null;
+      }
+
+      rows.forEach(function (row) {
+        row.addEventListener('pointerenter', function (e) {
+          if (e.pointerType !== 'mouse') return;
+          img.src = row.dataset.preview;
+          tx = x = e.clientX; ty = y = e.clientY;
+          live = true;
+          peek.classList.add('is-on');
+          if (!raf) raf = requestAnimationFrame(loop);
+        });
+        row.addEventListener('pointermove', function (e) { tx = e.clientX; ty = e.clientY; });
+        row.addEventListener('pointerleave', function () {
+          live = false;
+          peek.classList.remove('is-on');
+        });
+      });
+    })();
+  </script>
+
+<script>
+// Scroll-driven active row. Touch devices have no hover, so the row nearest a
+// horizontal band across the viewport becomes active instead — same states the
+// cursor drives on desktop, plus an inline preview in a slot the row always
+// reserves, so nothing shifts as the active row changes.
+(function () {
+  var rows = [].slice.call(document.querySelectorAll('.row__link[data-preview]'));
+  if (!rows.length) return;
+  if (window.matchMedia && matchMedia('(hover: hover)').matches) return;
+
+  /* ---- TWEAK THE TRIGGER HERE ----------------------------------------
+     BAND   where the focus line sits, as a fraction of viewport height.
+            Fixed to the screen, not to the panel: a row goes active when it
+            reaches this line. .5 = dead centre, .4 = higher, .6 = lower.
+     REACH  how close a row's centre must get to that line before it claims
+            the panel, as a fraction of viewport height. Nothing within REACH
+            means no active row, and the panel hides completely.
+            Lower it to make the preview appear later and let go sooner.     */
+  var BAND = 0.5;
+  var REACH = 0.12;
+
+  // one stage above the list, holding every screenshot stacked
+  var list = document.querySelector('.work__list');
+  var section = list.closest('section');
+  var stage = document.createElement('div');
+  stage.className = 'peekstage';
+  stage.setAttribute('aria-hidden', 'true');
+  var shots = rows.map(function (row) {
+    var img = document.createElement('img');
+    img.src = row.dataset.preview;
+    img.alt = '';
+    img.decoding = 'async';
+    stage.appendChild(img);
+    return img;
+  });
+  list.parentNode.insertBefore(stage, list);
+
+  var active = null, queued = false;
+
+  // the pinned offset from CSS, captured before we start writing `top` inline
+  var pinTop = parseFloat(getComputedStyle(stage).top) || 0;
+
+  function pick() {
+    queued = false;
+
+    // The panel never rises above the section, so it can't end up over the hero;
+    // it slides up to its pinned offset as the section arrives. The focus line
+    // stays put on screen, so rows go active on reaching it — not on the panel
+    // catching up with them.
+    var sr = section.getBoundingClientRect();
+    var h = stage.offsetHeight;
+    var top = Math.max(pinTop, sr.top);
+    stage.style.top = top + 'px';
+
+    var line = innerHeight * BAND, reach = innerHeight * REACH;
+    var best = null, bestD = Infinity;
+    for (var i = 0; i < rows.length; i++) {
+      var b = rows[i].getBoundingClientRect();
+      var d = Math.abs(b.top + b.height / 2 - line);
+      if (d < bestD) { bestD = d; best = rows[i]; }
+    }
+    // nothing near the line — no row is active and the panel goes away
+    if (bestD > reach) best = null;
+
+    // the panel has to fit inside the section it belongs to
+    if (best && sr.bottom < top + h) best = null;
+    if (best === active) return;
+    if (active) active.classList.remove('is-active');
+    if (best) best.classList.add('is-active');
+    active = best;
+
+    // with no active row the panel hides entirely — frame, border and all
+    stage.classList.toggle('is-live', !!best);
+    var i = rows.indexOf(best);
+    shots.forEach(function (img, k) { img.classList.toggle('is-on', k === i); });
+  }
+
+  function onScroll() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(pick);
+  }
+
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll, { passive: true });
+  pick();
+})();
+</script>
+
+<script>
+// Scrollspy for the dock: the white pill follows whichever section you are in.
+// Reads the dock's own hrefs, so adding or removing an icon needs nothing here.
+(function () {
+  var links = [].slice.call(document.querySelectorAll('.dock a[href^="#"]'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  if (!links.length) return;
+
+  /* ---- SQUASH TOGGLE ----
+     false = the disc slides and overshoots (option 1)
+     true  = it also stretches while travelling and snaps round on landing
+             (option 3). Flip it and reload to compare.                     */
+  var SQUASH = true;
+
+  var dock = links[0].parentNode;
+  var pill = document.createElement('span');
+  pill.className = 'dock__pill';
+  dock.insertBefore(pill, dock.firstChild);
+  var squashTimer;
+
+  function place(a) {
+    pill.style.width = a.offsetWidth + 'px';
+    pill.style.height = a.offsetHeight + 'px';
+    pill.style.top = a.offsetTop + 'px';
+    pill.style.translate = a.offsetLeft + 'px';
+  }
+
+  /* ---- TWEAK THE HANDOVER HERE ----
+     LINE  a section takes over once its top passes this many px down the
+           screen. Sits just below the dock so the switch lands as the new
+           section reaches the bar. Raise it to hand over later.           */
+  var LINE = 130;
+
+  var current = -1, queued = false;
+
+  function spy() {
+    queued = false;
+    var i = 0;
+    for (var k = 0; k < targets.length; k++) {
+      if (targets[k] && targets[k].getBoundingClientRect().top <= LINE) i = k;
+    }
+    // the last section is often shorter than the viewport and would never
+    // reach the line on its own, so the bottom of the page selects it
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) i = links.length - 1;
+    if (i === current) return;
+    var first = current === -1;
+    current = i;
+    links.forEach(function (a, k) {
+      if (k === i) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+
+    place(links[i]);
+    if (first) { pill.offsetWidth; pill.classList.add('is-ready'); return; }
+
+    if (SQUASH) {
+      pill.classList.add('is-squash');
+      clearTimeout(squashTimer);
+      squashTimer = setTimeout(function () { pill.classList.remove('is-squash'); }, 230);
+    }
+  }
+
+  function onScroll() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(spy);
+  }
+
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', function () { place(links[current] || links[0]); onScroll(); }, { passive: true });
+  spy();
+})();
+</script>
+</body>
+
+</html>
